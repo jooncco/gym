@@ -1,9 +1,9 @@
-package leetcode;
+package leetcode.p703;
+// https://leetcode.com/problems/kth-largest-element-in-a-stream/
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-// https://leetcode.com/problems/kth-largest-element-in-a-stream/
 class KthLargest {
 
     private Queue<Integer> arr;
