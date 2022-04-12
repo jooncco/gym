@@ -1,9 +1,10 @@
 package leetcode.p682;
+// https://leetcode.com/problems/baseball-game/
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution {
+class Solution {
     public int calPoints(String[] ops) {
         List<Integer> scores= new ArrayList<Integer>();
         int n;

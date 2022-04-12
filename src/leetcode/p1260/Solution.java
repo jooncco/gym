@@ -1,9 +1,10 @@
 package leetcode.p1260;
+// https://leetcode.com/problems/shift-2d-grid/
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution {
+class Solution {
     private int k, size;
     private int getShiftedIndex(int idx) {
         return (idx-k+size)%size;
