@@ -1,18 +1,7 @@
 package leetcode.p230;
 // https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
+import leetcode.TreeNode;
 
 class Solution {
     private int cnt= 0, ans;

@@ -1,18 +1,7 @@
 package leetcode.p897;
 // https://leetcode.com/problems/increasing-order-search-tree/
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
+import leetcode.TreeNode;
 
 public class Solution {
     private void inorder(TreeNode node, TreeNode result) {
