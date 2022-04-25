@@ -1,4 +1,4 @@
-package p1396;
+package leetcode.p1396;
 // https://leetcode.com/problems/design-underground-system/
 
 import java.util.ArrayList;
