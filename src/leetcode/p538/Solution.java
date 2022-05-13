@@ -1,8 +1,6 @@
 package leetcode.p538;
 // https://leetcode.com/problems/convert-bst-to-greater-tree/
 
-import leetcode.TreeNode;
-
 class Solution {
     private final int NO_VALUE = -Integer.MAX_VALUE;
     private int convertNode(TreeNode node, int parentSum) {
@@ -17,5 +15,18 @@ class Solution {
     public TreeNode convertBST(TreeNode root) {
         convertNode(root, 0);
         return root;
+    }
+}
+
+class TreeNode {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode() {}
+    public TreeNode(int val) { this.val = val; }
+    public TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }

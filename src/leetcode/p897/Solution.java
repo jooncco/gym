@@ -1,8 +1,6 @@
 package leetcode.p897;
 // https://leetcode.com/problems/increasing-order-search-tree/
 
-import leetcode.TreeNode;
-
 public class Solution {
     private void inorder(TreeNode node, TreeNode result) {
         if (node == null) return;
@@ -12,10 +10,22 @@ public class Solution {
         inorder(node.right, result.right);
     }
 
-
     public TreeNode increasingBST(TreeNode root) {
         TreeNode ret= new TreeNode(-1);
         inorder(root, ret);
         return ret.right;
+    }
+}
+
+class TreeNode {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode() {}
+    public TreeNode(int val) { this.val = val; }
+    public TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }

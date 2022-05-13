@@ -1,8 +1,6 @@
 package leetcode.p669;
 // https://leetcode.com/problems/trim-a-binary-search-tree/
 
-import leetcode.TreeNode;
-
 public class Solution {
     public TreeNode trimBST(TreeNode root, int low, int high) {
         if (root == null) return null;
@@ -17,5 +15,18 @@ public class Solution {
         trimmedNode.left= trimBST(root.left, low, high);
         trimmedNode.right= trimBST(root.right, low, high);
         return trimmedNode;
+    }
+}
+
+class TreeNode {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode() {}
+    public TreeNode(int val) { this.val = val; }
+    public TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }
