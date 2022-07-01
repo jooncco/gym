@@ -1,4 +1,4 @@
-package p1647;
+package leetcode.p1647;
 
 import java.util.Arrays;
 
