@@ -7,11 +7,17 @@ import java.util.StringTokenizer;
 
 public class Main {
     private final static FastScanner sc= new FastScanner();
+    private static int t,n;
 
     public static void main(String[] args) {
+        t= sc.nextInt();
+        while (t-- > 0) {
+            n= sc.nextInt();
 
+        }
     }
 }
+
 class FastScanner {
     BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st= new StringTokenizer("");
