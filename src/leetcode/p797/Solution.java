@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Solution {
     private int n;
-    private List<List<Integer>> ans= new LinkedList<>();
+    private final List<List<Integer>> ans= new LinkedList<>();
 
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         n= graph.length;
