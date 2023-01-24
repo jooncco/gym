@@ -9,9 +9,9 @@ public class Solution {
         int n= board.length;
         int[] next= new int[n*n+1];
         for (int num= 1; num <= n*n; ++num) {
-            int[] coordinate= toCoordinate(n, num);
-            int i= coordinate[0], j= coordinate[1];
-            next[num]= board[i][j] == -1 ? num+1 : board[i][j];
+            int i= (num-1)/n;
+            int j= i%2 == 0 ? (num-1)%n : n-1-(num-1)%n;
+            next[num]= board[n-1-i][j] == -1 ? num+1 : board[n-1-i][j];
         }
         int[] minMove= new int[n*n+1];
         for (int i=1; i <= n*n; ++i) {
@@ -39,11 +39,5 @@ public class Solution {
             }
         }
         return minMove[n*n] == Integer.MAX_VALUE ? -1 : minMove[n*n];
-    }
-
-    private int[] toCoordinate(int n, int num) {
-        int i= n-1-(num-1)/n;
-        int j= (num-1)/n%2 == 0 ? (num-1)%n : n-1-(num-1)%n;
-        return new int[]{i,j};
     }
 }
