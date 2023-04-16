@@ -4,8 +4,9 @@ package leetcode.p2218;
 import java.util.List;
 
 /**
- * Time: O (n * len(sum(piles[i].size()))
- * Space: O (n * k)
+ * Dynamic Programming (Top-down)
+ * | Time: O (n * len(sum(piles[i].size()))
+ * | Space: O (n * k)
  */
 public class Solution {
     private int[][] cache;
