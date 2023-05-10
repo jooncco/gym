@@ -1,7 +1,13 @@
 package leetcode.p59;
 // https://leetcode.com/problems/spiral-matrix-ii/
 
-class Solution {
+
+/**
+ * Iteration
+ * | Time: O (n^2)
+ * | Space: O (n^2)
+ */
+public class Solution {
     private int grid[][];
     private int num, size, r, c;
     private enum DIRECTION { DOWN, LEFT, UP, RIGHT }
