@@ -1,6 +1,11 @@
 package leetcode.p785;
 // https://leetcode.com/problems/is-graph-bipartite/
 
+/**
+ * Union Find (Disjoint set)
+ * | Time: O (n)
+ * | Space: O (n)
+ */
 public class Solution {
 
     class UnionFind {
