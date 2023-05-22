@@ -1,60 +1,29 @@
 package leetcode.p347;
 // https://leetcode.com/problems/top-k-frequent-elements/
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
-class Pair implements Comparable<Pair> {
-    private int x, y;
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public Pair(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    @Override
-    public int compareTo(final Pair o) {
-        if (x == o.getX()) return Integer.compare(y, o.getY());
-        return Integer.compare(x, o.getX());
-    }
-}
-
-class Solution {
-    private Map<Integer, Integer> freqMap;
-
+/**
+ * Sorting
+ * | Time: O (n log n)
+ * | Space: O (n)
+ */
+public class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        freqMap= new HashMap<>();
+        HashMap<Integer, Integer> freq= new HashMap<>();
         for (int num : nums) {
-            Integer freq= freqMap.get(num);
-            if (freq == null) freq= 0;
-            freqMap.put(num, freq+1);
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
         }
-        List<Pair> freqList = new ArrayList<>();
-        for (Integer key : freqMap.keySet()) {
-            freqList.add(new Pair(freqMap.get(key), key));
+        PriorityQueue<int[]> pq= new PriorityQueue<>((a,b) -> b[1]-a[1]);
+        for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+            pq.add(new int[]{entry.getKey(), entry.getValue()});
         }
-        Collections.sort(freqList, Collections.reverseOrder());
-        int ret[]= new int[k];
-        for (int i=0; i < k; ++i) ret[i]= freqList.get(i).getY();
-        return ret;
+        int[] ans= new int[k];
+        for (int i=0; i < k && !pq.isEmpty(); ++i) {
+            ans[i]= pq.poll()[0];
+        }
+        return ans;
     }
 }
