@@ -3,35 +3,43 @@ package leetcode.p705;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-class MyHashSet {
-
-    private final int INDEX_SIZE= 10000;
-    private List<List<Integer>> hashTable;
+/**
+ * Hashing
+ * | Time: O (1) for add, remove, contains
+ * | Space: O (key)
+ */
+public class MyHashSet {
+    private final List<List<Integer>> buckets;
+    private static final int INDEX_SIZE= 10000;
 
     public MyHashSet() {
-        hashTable= new ArrayList<>();
+        buckets= new ArrayList<>(INDEX_SIZE);
         for (int i=0; i < INDEX_SIZE; ++i) {
-            hashTable.add(new ArrayList<Integer>());
+            buckets.add(new ArrayList<>());
         }
     }
 
     public void add(int key) {
-        List<Integer> group= hashTable.get(key%INDEX_SIZE);
-        if (!group.contains(key)) {
-            group.add(key);
+        int idx= key%INDEX_SIZE;
+        if (!buckets.get(idx).contains(key)) {
+            buckets.get(idx).add(key);
         }
     }
 
-    public void remove(Integer key) {
-        List<Integer> group= hashTable.get(key%INDEX_SIZE);
-        if (group.contains(key)) {
-            group.removeIf(key::equals);
+    public void remove(int key) {
+        int idx= key%INDEX_SIZE;
+        if (buckets.get(idx).contains(key)) {
+            List<Integer> bucket= buckets.get(idx)
+                    .stream()
+                    .filter(k -> k != key)
+                    .collect(Collectors.toList());
+            buckets.set(idx, bucket);
         }
     }
 
     public boolean contains(int key) {
-        List<Integer> group= hashTable.get(key%INDEX_SIZE);
-        return group.contains(key);
+        return buckets.get(key%INDEX_SIZE).contains(key);
     }
 }
