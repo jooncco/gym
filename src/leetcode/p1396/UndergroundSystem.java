@@ -1,87 +1,59 @@
 package leetcode.p1396;
 // https://leetcode.com/problems/design-underground-system/
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * Ad hoc
+ * | Time: O (1) for checkIn, checkOut, getAverageTime
+ * | Space: O (# of travels)
+ */
 public class UndergroundSystem {
-
-    class Destination {
-        String name;
-        int cnt;
-        int total;
-
-        public Destination(String name, int cnt, int total) {
-            this.name= name;
-            this.cnt= cnt;
-            this.total= total;
-        }
-    }
-
-    class Station {
-        String name;
-        List<Destination> destinations;
-
-        public Station(String name) {
-            this.name= name;
-            this.destinations= new ArrayList<>();
-        }
-    }
-
-    private List<Station> stations;
-    private Map<Integer,String> checkIns;
-    private Map<Integer,Integer> times;
+    private final Map<Integer, CheckIn> checkIns;
+    private final Map<String, Map<String, Travels>> sums;
 
     public UndergroundSystem() {
-        stations= new ArrayList<>();
         checkIns= new HashMap<>();
-        times= new HashMap<>();
+        sums= new HashMap<>();
     }
 
     public void checkIn(int id, String stationName, int t) {
-        checkIns.put(id,stationName);
-        times.put(id,t);
+        checkIns.put(id, new CheckIn(stationName, t));
     }
 
     public void checkOut(int id, String stationName, int t) {
-        String startStation= checkIns.get(id);
-        Integer startTime= times.get(id);
-        Station station= stations.stream().filter(s -> s.name.equals(startStation)).findAny().orElse(null);
-        if (station == null) {
-            station= new Station(startStation);
-            station.destinations.add(new Destination(stationName, 1, t-startTime));
-            stations.add(station);
-        }
-        else {
-            Destination destination= station.destinations.stream().filter(d -> d.name.equals(stationName)).findAny().orElse(null);
-            if (destination == null) {
-                destination= new Destination(stationName, 1, t-startTime);
-                station.destinations.add(destination);
-            }
-            else {
-                destination.cnt++;
-                destination.total += t-startTime;
-            }
-        }
+        CheckIn checkIn= checkIns.get(id);
+        sums.computeIfAbsent(checkIn.stationName, x -> new HashMap<>())
+            .computeIfAbsent(stationName, x -> new Travels())
+            .add(t-checkIn.t);
     }
 
     public double getAverageTime(String startStation, String endStation) {
-        Station station= stations.stream().filter(s -> s.name.equals(startStation)).findAny().orElse(null);
-        for (Destination destination : station.destinations) {
-            if (destination.name.equals(endStation)) {
-                return destination.total / (double)destination.cnt;
-            }
+        return sums.get(startStation).get(endStation).getAverage();
+    }
+
+    private static class CheckIn {
+        String stationName;
+        int t;
+
+        CheckIn(String stationName, int t) {
+            this.stationName= stationName;
+            this.t= t;
         }
-        return 1d;
+    }
+
+    private static class Travels {
+        long sum;
+        int count;
+
+        void add(int time) {
+            sum += time;
+            ++count;
+        }
+
+        double getAverage() {
+            return sum * 1.0 / count;
+        }
     }
 }
-
-/**
- * Your UndergroundSystem object will be instantiated and called as such:
- * UndergroundSystem obj = new UndergroundSystem();
- * obj.checkIn(id,stationName,t);
- * obj.checkOut(id,stationName,t);
- * double param_3 = obj.getAverageTime(startStation,endStation);
- */
