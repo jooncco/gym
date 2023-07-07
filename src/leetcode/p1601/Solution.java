@@ -1,14 +1,20 @@
 package leetcode.p1601;
+// https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/
 
+/**
+ * Depth First Search
+ * | Time: O (2^requests.length)
+ * | Space: O (requests.length)
+ */
 public class Solution {
     private int ans= 0;
 
     public int maximumRequests(int n, int[][] requests) {
-        dfs(n, requests, new int[n], 0, 0);
+        dfs(requests, new int[n], 0, 0);
         return ans;
     }
 
-    private void dfs(int n, int[][] requests, int[] netChanges, int curr, int acceptedRequests) {
+    private void dfs(int[][] requests, int[] netChanges, int curr, int acceptedRequests) {
         if (curr == requests.length) {
             if (isPossible(netChanges)) {
                 ans= Math.max(ans, acceptedRequests);
@@ -16,10 +22,10 @@ public class Solution {
             return;
         }
 
-        dfs(n, requests, netChanges, curr+1, acceptedRequests);
+        dfs(requests, netChanges, curr+1, acceptedRequests);
         --netChanges[requests[curr][0]];
         ++netChanges[requests[curr][1]];
-        dfs(n, requests, netChanges, curr+1, acceptedRequests+1);
+        dfs(requests, netChanges, curr+1, acceptedRequests+1);
         --netChanges[requests[curr][1]];
         ++netChanges[requests[curr][0]];
     }
