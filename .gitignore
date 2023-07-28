@@ -4,6 +4,7 @@ gym.iml
 
 # Compiled class file
 *.class
+out/
 
 # Log file
 *.log
