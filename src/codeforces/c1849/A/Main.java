@@ -1,28 +1,20 @@
-package codeforces.c1849.B;
+package codeforces.c1849.A;
+// https://codeforces.com/contest/1849/problem/A
 
 import java.io.*;
 import java.util.*;
 
-public class Solution {
+/**
+ * Math
+ * | Time: O (1)
+ * | Space: O (1)
+ */
+public class Main {
     private static FastScanner sc= new FastScanner();
 
-    private static String solve() throws IOException {
-        int n= sc.nextInt(), k= sc.nextInt();
-        List<int[]> monsters= new ArrayList<>();
-        for (int i=0; i < n; ++i) {
-            int[] monster= new int[]{sc.nextInt()%k, i+1};
-            if (monster[0] == 0) monster[0] += k;
-            monsters.add(monster);
-        }
-        Collections.sort(monsters, (a, b) -> a[0] == b[0] ? a[1]-b[1] : b[0]-a[0]);
-        StringBuilder sb= new StringBuilder();
-        boolean space= false;
-        for (int[] monster : monsters) {
-            if (space) sb.append(" ");
-            sb.append(monster[1]);
-            if (!space) space= true;
-        }
-        return sb.toString();
+    private static int solve() throws IOException {
+        int b= sc.nextInt(), c= sc.nextInt(), h= sc.nextInt();
+        return 1 + 2*Math.min(b-1, (c+h));
     }
 
     private static class FastScanner {

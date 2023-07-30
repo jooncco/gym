@@ -9,7 +9,7 @@ import java.util.*;
  * | Time: O (n + m log(m))
  * | Space: O (n + m)
  */
-public class Solution {
+public class Main {
     private static FastScanner sc= new FastScanner();
 
     private static int solve() throws IOException {
