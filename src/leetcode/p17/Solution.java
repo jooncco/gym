@@ -1,32 +1,37 @@
 package leetcode.p17;
 // https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
+/**
+ * DFS (Back Tracking)
+ * | Time: 3^len
+ * | Space: O (len)
+ */
 public class Solution {
-    private String[] letters = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    private final String[][] pad = { {},
+            {}, { "a", "b", "c" }, { "d", "e", "f" },
+            { "g", "h", "i" }, { "j", "k", "l" }, { "m", "n", "o" },
+            { "p", "q", "r", "s" }, { "t", "u", "v" }, { "w", "x", "y", "z" } };
+    private List<String> ans = new ArrayList<>();
 
     public List<String> letterCombinations(String digits) {
-        int n= digits.length();
-        if (n == 0) return List.of();
+        if (digits.length() == 0)
+            return ans;
+        dfs(digits, 0, "");
+        return ans;
+    }
 
-        List<String> combinations= new LinkedList<>();
-        int digit= Integer.parseInt(digits.charAt(0)+"");
-        for (int i=0; i < letters[digit].length(); ++i) {
-            combinations.add(""+letters[digit].charAt(i));
+    private void dfs(String digits, int idx, String curStr) {
+        if (idx == digits.length()) {
+            ans.add(curStr);
+            return;
         }
-        for (int i=1; i < n; ++i) {
-            digit= Integer.parseInt(digits.charAt(i)+"");
-            String possibleLetters= letters[digit];
-            List<String> newCombinations = new LinkedList<>();
-            for (int j=0; j < combinations.size(); ++j) {
-                for (int k=0; k < possibleLetters.length(); ++k) {
-                    newCombinations.add(combinations.get(j)+possibleLetters.charAt(k));
-                }
-            }
-            combinations= newCombinations;
+
+        String nextStr = curStr;
+        for (String c : pad[digits.charAt(idx) - '0']) {
+            nextStr = curStr + c;
+            dfs(digits, idx + 1, nextStr);
         }
-        return combinations;
     }
 }
