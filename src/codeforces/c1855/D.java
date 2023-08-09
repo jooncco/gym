@@ -1,4 +1,4 @@
-package codeforces.c1855.D;
+package codeforces.c1855;
 // https://codeforces.com/contest/1855/problem/D
 
 import java.util.*;
@@ -9,7 +9,7 @@ import java.io.*;
  * | Time: O (n^2/w)
  * | Space: O (2*n)
  */
-public class Main {
+public class D {
     private static FastScanner sc = new FastScanner();
 
     private static long solve() {
