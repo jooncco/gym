@@ -1,4 +1,4 @@
-package leetcode.lw357.p4;
+package leetcode.lw357.D;
 // https://leetcode.com/contest/weekly-contest-357/problems/maximum-elegance-of-a-k-length-subsequence/
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package leetcode.lw357.p1;
+package leetcode.lw357.A;
 // https://leetcode.com/contest/weekly-contest-357/problems/faulty-keyboard/
 
 /**

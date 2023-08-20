@@ -1,4 +1,4 @@
-package leetcode.lw357.p3;
+package leetcode.lw357.C;
 // https://leetcode.com/contest/weekly-contest-357/problems/find-the-safest-path-in-a-grid/
 
 import java.util.LinkedList;
