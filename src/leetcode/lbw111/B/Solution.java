@@ -1,4 +1,4 @@
-package leetcode.lb111.B;
+package leetcode.lbw111.B;
 // https://leetcode.com/contest/biweekly-contest-111/problems/make-string-a-subsequence-using-cyclic-increments/
 
 /**

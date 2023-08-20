@@ -1,4 +1,4 @@
-package leetcode.lb111.C;
+package leetcode.lbw111.C;
 // https://leetcode.com/contest/biweekly-contest-111/problems/sorting-three-groups/
 
 import java.util.*;

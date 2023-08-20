@@ -1,4 +1,4 @@
-package leetcode.lb111.A;
+package leetcode.lbw111.A;
 // https://leetcode.com/contest/biweekly-contest-111/problems/number-of-beautiful-integers-in-the-range/
 
 import java.util.*;
