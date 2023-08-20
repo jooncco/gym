@@ -1,4 +1,4 @@
-package leetcode.lw356.p3;
+package leetcode.lw356.C;
 // https://leetcode.com/contest/weekly-contest-356/problems/shortest-string-that-contains-three-strings/
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package leetcode.lw356.p2;
+package leetcode.lw356.B;
 // https://leetcode.com/contest/weekly-contest-356/problems/count-complete-subarrays-in-an-array/
 
 import java.util.HashSet;

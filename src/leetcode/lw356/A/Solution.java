@@ -1,4 +1,4 @@
-package leetcode.lw356.p1;
+package leetcode.lw356.A;
 // https://leetcode.com/contest/weekly-contest-356/problems/number-of-employees-who-met-the-target/
 
 /**

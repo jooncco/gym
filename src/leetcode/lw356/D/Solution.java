@@ -1,4 +1,4 @@
-package leetcode.lw356.p4;
+package leetcode.lw356.D;
 // https://leetcode.com/contest/weekly-contest-356/problems/count-stepping-numbers-in-range/
 
 /**
