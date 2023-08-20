@@ -1,4 +1,4 @@
-package leetcode.lw355.p3;
+package leetcode.lw355.C;
 // https://leetcode.com/contest/weekly-contest-355/problems/maximum-number-of-groups-with-increasing-length/
 
 import java.util.Collections;

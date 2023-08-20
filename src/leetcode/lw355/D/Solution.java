@@ -1,4 +1,4 @@
-package leetcode.lw355.p4;
+package leetcode.lw355.D;
 // https://leetcode.com/contest/weekly-contest-355/problems/count-paths-that-can-form-a-palindrome-in-a-tree/
 
 import java.util.HashMap;

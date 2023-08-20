@@ -1,4 +1,4 @@
-package leetcode.lw355.p1;
+package leetcode.lw355.A;
 // https://leetcode.com/contest/weekly-contest-355/problems/split-strings-by-separator/
 
 import java.util.ArrayList;

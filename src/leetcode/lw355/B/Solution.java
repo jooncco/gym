@@ -1,4 +1,4 @@
-package leetcode.lw355.p2;
+package leetcode.lw355.B;
 // https://leetcode.com/contest/weekly-contest-355/problems/largest-element-in-an-array-after-merge-operations/
 
 /**
