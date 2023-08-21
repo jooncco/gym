@@ -1,4 +1,4 @@
-package leetcode.lw358.p2;
+package leetcode.lw358.B;
 // https://leetcode.com/contest/weekly-contest-358/problems/double-a-number-represented-as-a-linked-list/
 
 /**

@@ -1,4 +1,4 @@
-package leetcode.lw358.p3;
+package leetcode.lw358.C;
 // https://leetcode.com/contest/weekly-contest-358/problems/minimum-absolute-difference-between-elements-with-constraint/
 
 import java.util.*;

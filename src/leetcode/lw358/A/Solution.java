@@ -1,4 +1,4 @@
-package leetcode.lw358.p1;
+package leetcode.lw358.A;
 // https://leetcode.com/contest/weekly-contest-358/problems/max-pair-sum-in-an-array/
 
 import java.util.*;
