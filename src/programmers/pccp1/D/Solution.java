@@ -1,7 +1,13 @@
 package programmers.pccp1.D;
+// https://school.programmers.co.kr/learn/courses/15008/lessons/121686
 
 import java.util.*;
 
+/**
+ * Sortings
+ * | Time: O (n log(n))
+ * | Space: O (n)
+ */
 public class Solution {
     public long[] solution(int[][] program) {
         int n= program.length;
@@ -9,20 +15,23 @@ public class Solution {
         for (int i=0; i < n; ++i) programs.add(program[i]);
         
         PriorityQueue<int[]> waitQueue= new PriorityQueue<>(
-            (a,b) -> a[0] == b[0] ? a[1]-b[1] : a[0]-b[0]);
-        long finishTime= programs.peek()[1];
+            (a,b) -> a[0] != b[0] ? a[0]-b[0] : a[1]-b[1]);
+        long curTime= programs.peek()[1];
         long[] ans= new long[11];
         while (!programs.isEmpty() || !waitQueue.isEmpty()) {
-            while (!programs.isEmpty() && programs.peek()[1] <= finishTime) {
+            while (!programs.isEmpty() && programs.peek()[1] <= curTime) {
                 waitQueue.add(programs.poll());
             }
-            if (!programs.isEmpty() && waitQueue.isEmpty()) waitQueue.add(programs.poll());
+            if (waitQueue.isEmpty()) curTime= programs.peek()[1];
+            while (!programs.isEmpty() && programs.peek()[1] <= curTime) {
+                waitQueue.add(programs.poll());
+            }
             int[] next= waitQueue.poll();
             int priority= next[0];
-            ans[priority] += Math.max(finishTime-next[1], 0);
-            finishTime= Math.max(finishTime+next[2], next[1]+next[2]);
+            ans[priority] += curTime-next[1];
+            curTime += next[2];
         }
-        ans[0]= finishTime;
+        ans[0]= curTime;
         return ans;
     }
 }

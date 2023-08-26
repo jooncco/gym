@@ -23,6 +23,6 @@ public class Solution {
                 }
             }
         }
-        return ans;
+        return ans.length() > 0 ? ans : "N";
     }
 }
