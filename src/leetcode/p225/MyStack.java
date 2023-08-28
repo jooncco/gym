@@ -1,8 +1,14 @@
 package leetcode.p225;
+// https://leetcode.com/problems/implement-stack-using-queues/
 
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Implementation
+ * | Time: O(n) for push, O(1) for the rest
+ * | Space: O(n)
+ */
 public class MyStack {
 
     private Queue<Integer> queue;
