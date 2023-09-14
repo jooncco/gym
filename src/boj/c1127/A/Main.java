@@ -1,8 +1,14 @@
 package boj.c1127.A;
+// https://codejam.lge.com/contest/problem/1127/1
 
 import java.util.*;
 import java.io.*;
 
+/**
+ * Implementation
+ * | Time: O(16n + 16n^3)
+ * | Space: O(n)
+ */
 public class Main {
     private static FastScanner sc = new FastScanner();
     private static int ans= 0;
@@ -26,45 +32,67 @@ public class Main {
             }
         }
 
-        dfs(n, new int[5][5], 0, 0, 3);
+        dfs(n, new int[5][5], new char[5][5], 0, 3);
         System.out.print(ans);
     }
 
     private static void rotate90(int[][] quality) {
-        
+        int[][] buf= new int[4][4];
+        for (int i=0; i < 4; ++i) {
+            for (int j= 0; j < 4; ++j) {
+                buf[j][3-i]= quality[i][j];
+            }
+        }
+        for (int i=0; i < 4; ++i) {
+            for (int j= 0; j < 4; ++j) {
+                quality[i][j]= buf[i][j];
+            }
+        }
     }
 
     private static void rotate90(char[][] color) {
-        
+        char[][] buf= new char[4][4];
+        for (int i=0; i < 4; ++i) {
+            for (int j= 0; j < 4; ++j) {
+                buf[j][3-i]= color[i][j];
+            }
+        }
+        for (int i=0; i < 4; ++i) {
+            for (int j= 0; j < 4; ++j) {
+                color[i][j]= buf[i][j];
+            }
+        }
     }
 
-    private static void dfs(int n, int[][] gama, int mask, int curIdx, int cnt) {
+    private static void dfs(int n, int[][] gamaQ, char[][] gamaC, int mask, int cnt) {
         if (cnt == 0) {
-            ans= Math.max(ans, compute(gama));
+            ans= Math.max(ans, compute(gamaQ, gamaC));
             return;
         }
-        if (curIdx == n) return;
 
         for (int i=0; i < n; ++i) {
-            if ((mask&(1<<i)) == 0 && cnt > 0) {
+            if ((mask&(1<<i)) == 0) {
                 for (int j= 0; j < 2; ++j) {
                     for (int k= 0; k < 2; ++k) {
-                        dfs(n, apply(gama, quality[i], color[i], j, k), mask|(1<<i), curIdx+1, cnt-1);
+                        for (int l= 0; l < 4; ++l) {
+                            rotate90(quality[i]);
+                            rotate90(color[i]);
+                            dfs(n, apply(gamaQ, quality[i], j, k), apply(gamaC, color[i], j, k), mask|(1<<i), cnt-1);
+                        }
                     }
                 }
             }
         }
     }
 
-    private static int[][] apply(int[][] gama, int[][] quality, char[][] color, int r, int c) {
+    private static int[][] apply(int[][] gamaQ, int[][] quality, int r, int c) {
         int[][] ret= new int[5][5];
         for (int i=0; i < 5; ++i) {
             for (int j= 0; j < 5; ++j) {
-                ret[i][j]= gama[i][j];
+                ret[i][j]= gamaQ[i][j];
             }
         }
 
-        // quality
         for (int i=0; i < 4; ++i) {
             for (int j= 0; j < 4; ++j) {
                 ret[r+i][c+j] += quality[i][j];
@@ -72,8 +100,17 @@ public class Main {
                 if (ret[r+i][c+j] > 9) ret[r+i][c+j]= 9;
             }
         }
+        return ret;
+    }
 
-        // color
+    private static char[][] apply(char[][] gamaC, char[][] color, int r, int c) {
+        char[][] ret= new char[5][5];
+        for (int i=0; i < 5; ++i) {
+            for (int j= 0; j < 5; ++j) {
+                ret[i][j]= gamaC[i][j];
+            }
+        }
+        
         for (int i= 0; i < 4; ++i) {
             for (int j= 0; j < 4; ++j) {
                 if (color[i][j] == 'W') continue;
@@ -83,14 +120,14 @@ public class Main {
         return ret;
     }
 
-    private static int compute(int[][] gama) {
+    private static int compute(int[][] gamaQ, char[][] gamaC) {
         int r= 0, g= 0, b= 0, y= 0;
         for (int i= 0; i < 5; ++i) {
             for (int j= 0; j < 5; ++j) {
-                if (gama[i][j] == 'R') ++r;
-                if (gama[i][j] == 'G') ++g;
-                if (gama[i][j] == 'B') ++b;
-                if (gama[i][j] == 'Y') ++y;
+                if (gamaC[i][j] == 'R') r += gamaQ[i][j];
+                if (gamaC[i][j] == 'G') g += gamaQ[i][j];
+                if (gamaC[i][j] == 'B') b += gamaQ[i][j];
+                if (gamaC[i][j] == 'Y') y += gamaQ[i][j];
             }
         }
         return 7*r + 5*b + 3*g + 2*y;
