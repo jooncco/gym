@@ -1,25 +1,29 @@
 package leetcode.p1658;
 // https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/
 
-
-import java.util.Arrays;
-
+/**
+ * Sliding Window
+ * | Time: O(n)
+ * | Space: O(1)
+ */
 public class Solution {
     public int minOperations(int[] nums, int x) {
         int n= nums.length;
-        if (n == 1) return nums[0] == x ? 1 : -1;
-
-        int target = Arrays.stream(nums).sum() - x;
-        int windowSum= nums[0], l= 0;
-        int minOp= Integer.MAX_VALUE;
-        if (target == windowSum) minOp= n-1;
-        for (int i=1; i < n; ++i) {
+        int sum= 0;
+        for (int num : nums) sum += num;
+        if (sum < x) return -1;
+        
+        int ans= Integer.MAX_VALUE;
+        int windowSum= 0, target= sum-x, l= 0;
+        for (int i= 0; i < n; ++i) {
             windowSum += nums[i];
-            while (target < windowSum && l <= i) windowSum -= nums[l++];
+            while (target < windowSum && l <= i) {
+                windowSum -= nums[l++];
+            }
             if (target == windowSum) {
-                minOp= Math.min( minOp, n-(i-l+1) );
+                ans= Math.min(ans, l+n-1-i);
             }
         }
-        return minOp == Integer.MAX_VALUE ? -1 : minOp;
+        return ans == Integer.MAX_VALUE ? -1 : ans;
     }
 }
