@@ -11,24 +11,23 @@ import java.io.*;
  */
 public class Main {
     private static FastScanner sc = new FastScanner();
+    private static final int INF= 987654321;
 
     private static void solve() {
-        int n= sc.nextInt(), l= sc.nextInt();
-        int[] arr= new int[n];
-        for (int i= 0; i < n; ++i) {
-            arr[i]= sc.nextInt();
+        int n= sc.nextInt(), L= sc.nextInt();
+        int[] a= new int[n+1];
+        for (int i= 1; i <= n; ++i) {
+            a[i]= sc.nextInt();
         }
-        double ans= 1000_000;
-        for (int i= 0; i <= n-l; ++i) {
-            int sum= 0, cnt= 0;
-            for (int j= i; j < i+l-1; ++j) {
-                sum += arr[j];
-                ++cnt;
-            }
-            for (int j= i+l-1; j < n; ++j) {
-                sum += arr[j];
-                ++cnt;
-                ans= Math.min(ans, sum*1.0/cnt);
+        int[] cumSum= new int[n+1];
+        for (int i=1; i <= n; ++i) {
+            cumSum[i]= cumSum[i-1]+a[i];
+        }
+        
+        double ans= INF;
+        for (int i=1; i <= n; ++i) {
+            for (int j=i+L-1; j <= n; ++j) {
+                ans= Math.min(ans, (cumSum[j]-cumSum[i-1])*1.0/(j-i+1));
             }
         }
         System.out.print(ans);
