@@ -1,54 +1,29 @@
 package leetcode.p706;
 // https://leetcode.com/problems/design-hashmap/
 
-import java.util.ArrayList;
-import java.util.List;
-
-class MyHashMap {
-
-    private final int BUCKETS= 10000;
-    private List<List<HashNode>> hashTable;
-    private class HashNode {
-        public Integer key, value;
-
-        HashNode(Integer key, Integer value) {
-            this.key= key;
-            this.value= value;
-        }
-    }
+/**
+ * Hasing
+ * | Time: O(1) for all operations
+ * | Space: O(|key|)
+ */
+public class MyHashMap {
+    private static final int CAPACITY= 1000_000 + 10;
+    private int[] bucket;
 
     public MyHashMap() {
-        hashTable = new ArrayList<>();
-        for (int i=0; i < BUCKETS; ++i) {
-            hashTable.add(new ArrayList<>());
-        }
+        bucket= new int[CAPACITY];
+        for (int i= 0; i < CAPACITY; ++i) bucket[i]= -1;
     }
-
-    private HashNode findHashNode(Integer key) {
-        int keyIndex = key%BUCKETS;
-        return hashTable.get(keyIndex).stream()
-                .filter(node -> node.key.equals(key))
-                .findAny().orElse(null);
+    
+    public void put(int key, int value) {
+        bucket[key]= value;
     }
-
-    public void put(Integer key, Integer value) {
-        HashNode node = findHashNode(key);
-        if (node != null) {
-            node.value = value;
-        }
-        else {
-            hashTable.get(key%BUCKETS).add(new HashNode(key,value));
-        }
-    }
-
+    
     public int get(int key) {
-        HashNode node = findHashNode(key);
-        if (node != null) return node.value;
-        else return -1;
+        return bucket[key];
     }
-
+    
     public void remove(int key) {
-        HashNode node = findHashNode(key);
-        if (node != null) hashTable.get(key%BUCKETS).remove(node);
+        bucket[key]= -1;
     }
 }
