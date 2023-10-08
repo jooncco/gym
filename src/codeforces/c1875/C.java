@@ -16,14 +16,14 @@ public class C {
         long n= sc.nextInt(), m= sc.nextInt();
         n %= m;
         long a= n/gcd(n,m), b= m/gcd(n,m);
-        if (countOnes(b) > 1) {
+        if (popcount(b) > 1) {
             System.out.print(-1);
             return;
         }
-        System.out.print(m*countOnes(a)-n);
+        System.out.print(m*popcount(a)-n);
     }
 
-    private static int countOnes(long a) {
+    private static int popcount(long a) {
         int cnt= 0;
         for (int i=0; i < 64; ++i) {
             if ((a & (1L<<i)) > 0) ++cnt;
