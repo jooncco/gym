@@ -71,22 +71,11 @@ public class Main {
         }
 
         int half= (an+1)/2;
-        List<Integer> a0= new ArrayList<>(half), a1= new ArrayList<>(an-half);
-        for (int i= 0; i < half; ++i) {
-            a0.add(a.get(i));
-        }
-        for (int i= half; i < an; ++i) {
-            a1.add(a.get(i));
-        }
+        List<Integer> a0= new ArrayList<>(a.subList(0, half));
+        List<Integer> a1= new ArrayList<>(a.subList(half, an));
 
-        List<Integer> b0= new ArrayList<>(Math.min(bn, half));
-        for (int i= 0; i < Math.min(bn, half); ++i) {
-            b0.add(b.get(i));
-        }
-        List<Integer> b1= new ArrayList<>(Math.max(0, bn-half));
-        for (int i= Math.min(bn, half); i < Math.max(0, bn-half); ++i) {
-            b1.add(b.get(i));
-        }
+        List<Integer> b0= new ArrayList<>(b.subList(0, Math.min(bn, half)));
+        List<Integer> b1= new ArrayList<>(b.subList(Math.min(bn, half), bn));
 
         List<Integer> z0= multiply(a0, b0);
         List<Integer> z1= multiply(a1, b1);
@@ -95,7 +84,7 @@ public class Main {
         List<Integer> z2= multiply(a0, b0);
         subtractFrom(z2, z0);
         subtractFrom(z2, z1);
-        List<Integer> ret= new ArrayList<>();
+        List<Integer> ret= new ArrayList<>(an+bn);
         for (int i= 0; i < an+bn; ++i) {
             ret.add(0);
         }
