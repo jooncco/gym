@@ -1,23 +1,21 @@
 package leetcode.p746;
+// https://leetcode.com/problems/min-cost-climbing-stairs/
 
-import java.util.Arrays;
-
+/**
+ * DP
+ * | Time: O(n)
+ * | Space: O(n)
+ */
 public class Solution {
-    private int n, cache[];
-
     public int minCostClimbingStairs(int[] cost) {
-        this.n= cost.length;
-        cache= new int[n+2];
-        Arrays.fill(cache, -1);
-        return Math.min(findMinCost(cost, n-1), findMinCost(cost, n-2));
-    }
-
-    private int findMinCost(final int[] cost, final int idx) {
-        if (idx <= 1) return cost[idx];
-        if (cache[idx] != -1) return cache[idx];
-
-        int minCost= Math.min(findMinCost(cost, idx-1), findMinCost(cost, idx-2));
-        cache[idx]= minCost + cost[idx];
-        return cache[idx];
+        int n= cost.length;
+        int[] minCost= new int[n];
+        for (int i=0; i < n; ++i) minCost[i]= Integer.MAX_VALUE;
+        minCost[0]= cost[0];
+        minCost[1]= cost[1];
+        for (int i=2; i < n; ++i) {
+            minCost[i]= cost[i] + Math.min(minCost[i-1], minCost[i-2]);
+        }
+        return Math.min(minCost[n-1], minCost[n-2]);
     }
 }
