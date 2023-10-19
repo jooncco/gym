@@ -1,31 +1,46 @@
 package leetcode.p844;
+// https://leetcode.com/problems/backspace-string-compare/
 
-import java.util.Stack;
-
+/**
+ * Strings
+ * | Time: O(n)
+ * | Space: O(1)
+ */
 public class Solution {
-    private Stack<Character> getResult(String s) {
-        int n= s.length();
-        Stack<Character> S= new Stack<>();
-        for (int i=0; i < n; ++i) {
-            if (s.charAt(i) == '#') {
-                if (!S.isEmpty()) S.pop();
+    public boolean backspaceCompare(String s, String t) {
+        int idxS= s.length()-1, idxT= t.length()-1;
+        while (idxS > -1 && idxT > -1) {
+            System.out.println("idxS: " + idxS + " / idxT: " + idxT);
+            if (s.charAt(idxS) == '#') {
+                idxS= nextLowercaseIdx(s, idxS);
+                continue;
             }
-            else S.push(s.charAt(i));
+            if (t.charAt(idxT) == '#') {
+                idxT= nextLowercaseIdx(t, idxT);
+                continue;
+            }
+            if (s.charAt(idxS) != t.charAt(idxT)) {
+                return false;
+            }
+            --idxS;
+            --idxT;
         }
-        return S;
+        if (idxS > -1 && s.charAt(idxS) == '#') {
+            idxS= nextLowercaseIdx(s, idxS);
+        }
+        if (idxT > -1 && t.charAt(idxT) == '#') {
+            idxT= nextLowercaseIdx(t, idxT);
+        }
+        return idxS < 0 && idxT < 0;
     }
 
-
-    public boolean backspaceCompare(String s, String t) {
-        int m= s.length(), n= t.length();
-        Stack<Character> S= getResult(s);
-        Stack<Character> T= getResult(t);
-        if (S.size() != T.size()) return false;
-        while (!S.empty()) {
-            char c1= S.peek(), c2= T.peek();
-            S.pop(); T.pop();
-            if (c1 != c2) return false;
+    private int nextLowercaseIdx(String str, int idx) {
+        int cnt= 0;
+        while (idx > -1 && (str.charAt(idx) == '#' || cnt > 0)) {
+            if (str.charAt(idx) == '#') ++cnt;
+            else --cnt;
+            --idx;
         }
-        return true;
+        return idx;
     }
 }
