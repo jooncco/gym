@@ -1,4 +1,5 @@
 package leetcode.p1846;
+// https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/
 
 import java.util.*;
 
