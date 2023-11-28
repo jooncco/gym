@@ -1,5 +1,11 @@
 package leetcode.lw373.B;
+// https://leetcode.com/contest/weekly-contest-373/problems/count-beautiful-substrings-i/
 
+/**
+ * Brute Force
+ * | Time: O(|s|^2)
+ * | Space: O(1)
+ */
 public class Solution {
     public int beautifulSubstrings(String s, int k) {
         int n= s.length();

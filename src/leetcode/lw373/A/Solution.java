@@ -1,5 +1,11 @@
 package leetcode.lw373.A;
+// https://leetcode.com/contest/weekly-contest-373/problems/matrix-similarity-after-cyclic-shifts/
 
+/**
+ * Implementaion
+ * | Time: O(mn)
+ * | Space: O(1)
+ */
 public class Solution {
     public boolean areSimilar(int[][] mat, int k) {
         int m= mat.length, n= mat[0].length;
