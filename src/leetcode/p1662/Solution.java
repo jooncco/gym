@@ -1,6 +1,11 @@
 package leetcode.p1662;
 // https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/
 
+/**
+ * Strings
+ * | Time: O(n)
+ * | Space: O(n)
+ */
 public class Solution {
     public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
         return concat(word1).equals(concat(word2));
