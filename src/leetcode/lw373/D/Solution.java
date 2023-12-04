@@ -1,5 +1,10 @@
 package leetcode.lw373.D;
+// https://leetcode.com/contest/weekly-contest-373/problems/count-beautiful-substrings-ii/
 
+/**
+ * Dynamic Programming (Bottom-up)
+ * 
+ */
 public class Solution {
     public int beautifulSubstrings(String s, int k) {
         int n= s.length();
