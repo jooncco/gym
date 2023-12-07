@@ -1,4 +1,4 @@
-package leetcode.lw366.D;
+package leetcode.lw373.D;
 // https://leetcode.com/contest/weekly-contest-373/problems/count-beautiful-substrings-ii/
 
 import java.util.*;
