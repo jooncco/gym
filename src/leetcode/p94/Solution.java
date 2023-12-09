@@ -1,32 +1,27 @@
 package leetcode.p94;
 // https://leetcode.com/problems/binary-tree-inorder-traversal/
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
+/**
+ * Tree
+ * | Time: O(n)
+ * | Space: O(n)
+ */
 public class Solution {
-    public List<Integer> inorderTraversal(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
-        List<Integer> result= new LinkedList<>();
+    private List<Integer> list = new ArrayList<Integer>();
 
-        TreeNode curNode = root;
-        while (true) {
-            if (curNode == null) {
-                if (stack.isEmpty()) break;
-                result.add(stack.peek().val);
-                curNode= stack.pop().right;
-            } else {
-                if (curNode.left != null) {
-                    stack.push(curNode);
-                    curNode= curNode.left;
-                } else {
-                    result.add(curNode.val);
-                    curNode= curNode.right;
-                }
-            }
-        }
-        return result;
+    public List<Integer> inorderTraversal(TreeNode root) {
+        inorder(root);
+        return list;
+    }
+
+    public void inorder(TreeNode cur) {
+        if (cur == null)
+            return;
+        inorder(cur.left);
+        list.add(cur.val);
+        inorder(cur.right);
     }
 }
 
@@ -34,8 +29,14 @@ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
     TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
