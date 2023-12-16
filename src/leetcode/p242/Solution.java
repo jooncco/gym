@@ -1,6 +1,11 @@
 package leetcode.p242;
 // https://leetcode.com/problems/valid-anagram/
 
+/**
+ * Strings
+ * | Time: O(n)
+ * | Space: O(26)
+ */
 public class Solution {
     public boolean isAnagram(String s, String t) {
         // same length?
