@@ -3,6 +3,11 @@ package leetcode.p1155;
 
 import java.util.Arrays;
 
+/**
+ * DP (Top-down)
+ * | Time: O(nk^2)
+ * | Space: O(nk)
+ */
 public class Solution {
     private final int MOD= (int)1e9 + 7;
     private int n, k;
