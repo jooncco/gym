@@ -1,21 +1,23 @@
 package leetcode.p938;
 // https://leetcode.com/problems/range-sum-of-bst/description/
 
+/**
+ * Tree
+ * | Time: O(n)
+ * | Space: O(log(n))
+ */
 public class Solution {
-    private int sum= 0;
-    private int l, r;
-
+    int ans= 0;
     public int rangeSumBST(TreeNode root, int low, int high) {
-        l= low; r= high;
-        add(root);
-        return sum;
+        preOrder(root, low, high);
+        return ans;
     }
 
-    private void add(TreeNode node) {
+    private void preOrder(TreeNode node, int low, int high) {
         if (node == null) return;
-        if (node.val >= l && node.val <= r) sum += node.val;
-        add(node.left);
-        add(node.right);
+        if (node.val >= low && node.val <= high) ans += node.val;
+        if (node.val <= high) preOrder(node.right, low, high);
+        if (node.val >= low) preOrder(node.left, low, high);
     }
 }
 
