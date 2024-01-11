@@ -1,24 +1,27 @@
 package leetcode.p1026;
 // https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/description/
 
+/**
+ * Trees
+ * | Time: O(n)
+ * | Space: O(log(n))
+ */
 public class Solution {
-    private final int MAX_VAL= -1, MIN_VAL= 100001;
-    private int maxDiff= 0;
-
+    private int ans= 0;
 
     public int maxAncestorDiff(TreeNode root) {
-        int mn= root.val, mx= root.val;
-        findMaxDiff(root, mn, mx);
-        return maxDiff;
+        preorder(root, 987654321, -1);
+        return ans;
     }
 
-    private void findMaxDiff(TreeNode node, int mn, int mx) {
+    private void preorder(TreeNode node, int mn, int mx) {
         if (node == null) return;
         mn= Math.min(mn, node.val);
         mx= Math.max(mx, node.val);
-        maxDiff= Math.max(maxDiff, mx-mn);
-        findMaxDiff(node.left, mn, mx);
-        findMaxDiff(node.right, mn, mx);
+        ans= Math.max(ans, Math.abs(mn-mx));
+
+        preorder(node.left, mn, mx);
+        preorder(node.right, mn, mx);
     }
 }
 
