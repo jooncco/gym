@@ -1,25 +1,26 @@
 package leetcode.p2225;
 // https://leetcode.com/problems/find-players-with-zero-or-one-losses/
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
+/**
+ * Brute Force
+ * | Time: O(n)
+ * | Space: O(n)
+ */
 public class Solution {
     public List<List<Integer>> findWinners(int[][] matches) {
-        Set<Integer> zero= new HashSet<>(), one= new HashSet<>(), out= new HashSet<>();
-        for (int[] result : matches) zero.add(result[0]);
-        for (int[] result : matches) {
-            if (one.contains(result[1])) one.remove(result[1]);
-            else if (zero.contains(result[1])) {
-                zero.remove(result[1]);
-                one.add(result[1]);
-            }
-            else if (!out.contains(result[1])) one.add(result[1]);
+        int[] wins= new int[100010], loses= new int[100010];
+        for (int[] match : matches) {
+            int winner= match[0], loser= match[1];
+            ++wins[winner];
+            ++loses[loser];
         }
-        List<Integer> neverLost= zero.stream().sorted((a,b) -> a-b).collect(Collectors.toList());
-        List<Integer> lostOnce= one.stream().sorted((a,b) -> a-b).collect(Collectors.toList());
-        return List.of(neverLost, lostOnce);
+        List<Integer> zero= new ArrayList<>(), one= new ArrayList<>();
+        for (int i=0; i <= 100000; ++i) {
+            if (wins[i] > 0 && loses[i] == 0) zero.add(i);
+            if (wins[i] > 0 && loses[i] == 1) one.add(i);
+        }
+        return List.of(zero, one);
     }
 }
