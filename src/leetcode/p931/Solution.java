@@ -1,6 +1,11 @@
 package leetcode.p931;
 // https://leetcode.com/problems/minimum-falling-path-sum/
 
+/**
+ * DP (Bottom Up)
+ * | Time: O(n^2)
+ * | Space: O(1)
+ */
 public class Solution {
     public int minFallingPathSum(int[][] matrix) {
         int n= matrix.length;
