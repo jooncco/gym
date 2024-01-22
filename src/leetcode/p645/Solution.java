@@ -1,22 +1,22 @@
 package leetcode.p645;
 // https://leetcode.com/problems/set-mismatch/
 
+import java.util.*;
+
+/**
+ * Sortings
+ * | Time: O(n log(n))
+ * | Space: O(1)
+ */
 public class Solution {
     public int[] findErrorNums(int[] nums) {
-        int n= nums.length;
-        boolean[] isExist= new boolean[n+1];
-        int dup= -1;
-        for (int num : nums) {
-            if (isExist[num]) dup= num;
-            isExist[num]= true;
+        Arrays.sort(nums);
+        int missing= nums[0] != 1 ? 1 : -1, duplicate= -1;
+        for (int i=1; i < nums.length; ++i) {
+            if (nums[i] == nums[i-1]) duplicate= nums[i];
+            if (nums[i]-2 == nums[i-1]) missing= nums[i]-1;
         }
-        int miss= -1;
-        for (int num=1; num <= n; ++num) {
-            if (!isExist[num]) {
-                miss= num;
-                break;
-            }
-        }
-        return new int[]{dup, miss};
+        if (missing == -1) missing= nums.length;
+        return new int[]{duplicate, missing};
     }
 }
