@@ -5,6 +5,9 @@
 input.txt
 output.txt
 
+# VS Code
+.vscode/
+
 # IntelliJ
 .idea/
 gym.iml
