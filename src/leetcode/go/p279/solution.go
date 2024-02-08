@@ -1,7 +1,7 @@
 /*
 Leetcode problem p279 solution.
 
-Dynamic Programming
+Dynamic Programming (Top Down)
 - Time: O(n sqrt(n)^2)
 - Space: O(n)
 */
@@ -22,7 +22,7 @@ func getMinCount(num int) int {
 	}
 
 	cc[num]= num
-	for i := 1; i*i <= num; i++ {
+	for i:=1; i*i <= num; i++ {
 		cc[num] = min(cc[num], 1 + getMinCount(num-i*i))
 	}
 	return cc[num]
