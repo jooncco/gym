@@ -18,15 +18,15 @@ func largestDivisibleSubset(nums []int) []int {
 	for i, num := range nums {
 		subset := []int{num}
 		for j := 0; j < i; j++ {
-			if num % nums[j] == 0 && len(subset) < len(subsets[j])+1 {
-				subset= make([]int, len(subsets[j])+1)
-                copy(subset, subsets[j])
-				subset[len(subsets[j])]= num
+			if num%nums[j] == 0 && len(subset) < len(subsets[j])+1 {
+				subset = make([]int, len(subsets[j])+1)
+				copy(subset, subsets[j])
+				subset[len(subsets[j])] = num
 			}
 		}
-		subsets= append(subsets, subset)
+		subsets = append(subsets, subset)
 		if len(subset) > len(ans) {
-			ans= subset
+			ans = subset
 		}
 	}
 	return ans
