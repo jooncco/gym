@@ -1,46 +1,51 @@
 package leetcode.java.p787;
 // https://leetcode.com/problems/cheapest-flights-within-k-stops/
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
+/**
+ * BFS
+ * Time: O(nk)
+ * Space: O(n)
+ */
 public class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-        // reconstruct
-        Map<Integer, Set<int[]>> adj = new HashMap<>(); // { from, { to, cost } }
+        // Init adjacency list
+        Map<Integer, List<int[]>> adj = new HashMap<>();
         for (int[] flight : flights) {
-            int from = flight[0], to = flight[1], price = flight[2];
-            adj.computeIfAbsent(from, adjNodes -> new HashSet<>()).add(new int[] { to, price });
+            adj.putIfAbsent(flight[0], new ArrayList<>());
+            adj.get(flight[0]).add(new int[] { flight[1], flight[2] }); // {there, cost}
         }
 
-        // bfs
-        int[] minPrice = new int[n];
-        for (int i = 0; i < n; ++i) {
-            minPrice[i] = Integer.MAX_VALUE;
-        }
-        minPrice[src] = 0;
-        Queue<int[]> q = new LinkedList<>(); // {node, curPrice}
-        q.add(new int[] { src, 0 });
+        // Init minimum cost array
+        int[] minCost = new int[n];
+        Arrays.fill(minCost, Integer.MAX_VALUE);
+
+        // Run BFS up to k stops
+        Queue<int[]> queue = new LinkedList<>(); // {node, cost}
+        queue.add(new int[] { src, 0 });
         for (int stops = 0; stops <= k; ++stops) {
-            int size = q.size();
+            int size = queue.size();
             while (size-- > 0) {
-                int[] cur = q.poll();
-                int here = cur[0], curPrice = cur[1];
-                if (adj.get(here) == null)
-                    continue;
-                for (int[] adjNode : adj.get(here)) {
-                    int there = adjNode[0], cost = adjNode[1];
-                    if (minPrice[there] <= curPrice + cost)
-                        continue;
-                    minPrice[there] = curPrice + cost;
-                    q.add(new int[] { there, curPrice + cost });
+                int[] here = queue.poll();
+                if (adj.containsKey(here[0])) {
+                    for (int[] there : adj.get(here[0])) {
+                        int nextNode = there[0];
+                        int nextCost = here[1] + there[1];
+                        if (nextNode == dst) {
+                            minCost[dst] = Math.min(minCost[dst], nextCost);
+                            continue;
+                        }
+                        if (minCost[nextNode] <= nextCost) {
+                            continue;
+                        }
+
+                        minCost[nextNode] = nextCost;
+                        queue.add(new int[] { nextNode, nextCost });
+                    }
                 }
             }
         }
-        return minPrice[dst] == Integer.MAX_VALUE ? -1 : minPrice[dst];
+        return minCost[dst] == Integer.MAX_VALUE ? -1 : minCost[dst];
     }
 }
