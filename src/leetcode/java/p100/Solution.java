@@ -1,6 +1,11 @@
 package leetcode.java.p100;
 // https://leetcode.com/problems/same-tree/
 
+/**
+ * Brute Force using recursion
+ * Time: O(n) - n is the number of nodes in the tree
+ * Space: O(n) - n is the number of nodes in the tree
+ */
 public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null)
