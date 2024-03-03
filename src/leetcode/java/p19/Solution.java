@@ -1,26 +1,30 @@
 package leetcode.java.p19;
+// https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
+/**
+ * Data Structures
+ * Time: O(n)
+ * Space: O(1)
+ */
 public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        int len = 0;
+        // Compute size
+        int size = 0;
         ListNode curNode = head;
         while (curNode != null) {
-            ++len;
+            ++size;
             curNode = curNode.next;
         }
-        if (len <= 1)
-            return null;
-        if (len == n)
-            return head.next;
 
-        int idxFromHead = len - n, curIdx = 0;
-        curNode = head;
-        while (curIdx < idxFromHead - 1) {
+        // Remove target node
+        ListNode fakeHead = new ListNode(0, head);
+        int targetIdx = size - n;
+        curNode = fakeHead;
+        for (int i = 0; i < targetIdx; ++i) {
             curNode = curNode.next;
-            ++curIdx;
         }
         curNode.next = curNode.next.next;
-        return head;
+        return fakeHead.next;
     }
 }
 
