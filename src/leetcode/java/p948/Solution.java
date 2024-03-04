@@ -3,24 +3,29 @@ package leetcode.java.p948;
 
 import java.util.Arrays;
 
+/**
+ * Greedy
+ * Time: O(nlogn)
+ * Space: O(1)
+ */
 public class Solution {
-    public int bagOfTokensScore(int[] tokens, int initialPower) {
+    public int bagOfTokensScore(int[] tokens, int power) {
         Arrays.sort(tokens);
-        int n = tokens.length, l = 0, r = n - 1;
-        int maxScore = 0;
+        int l = 0, r = tokens.length - 1;
+        int score = 0, maxScore = 0;
         while (l <= r) {
-            if (tokens[l] > initialPower)
-                break;
-            int idx = l, score = 0, power = initialPower;
-            while (idx <= r && tokens[idx] <= power) {
-                power -= tokens[idx++];
+            // Earn max score
+            while (l <= r && power >= tokens[l]) {
+                power -= tokens[l++];
                 ++score;
             }
-            maxScore = Math.max(maxScore, score);
+            maxScore = Math.max(score, maxScore);
 
-            initialPower += (tokens[r] - tokens[l]);
-            ++l;
-            --r;
+            // Trade score with token with max power
+            if (score == 0)
+                break;
+            power += tokens[r--];
+            --score;
         }
         return maxScore;
     }
