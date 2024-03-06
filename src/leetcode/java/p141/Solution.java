@@ -2,27 +2,21 @@ package leetcode.java.p141;
 // https://leetcode.com/problems/linked-list-cycle/
 
 /**
- * Implementation
- * | Time: O (1)
- * | Space: O (1)
+ * Two Pointers
+ * | Time: O(n)
+ * | Space: O(1)
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        // trivial case
         if (head == null)
             return false;
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
 
-        // detect
-        ListNode l = head, r = head.next;
-        for (int i = 0; i < 15_000; ++i) {
-            if (l == null || r == null)
-                break;
-            if (l == r)
+            if (fast == slow)
                 return true;
-            l = l.next;
-            r = r.next;
-            if (r != null)
-                r = r.next;
         }
         return false;
     }
