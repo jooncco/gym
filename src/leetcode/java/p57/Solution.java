@@ -1,47 +1,54 @@
 package leetcode.java.p57;
 // https://leetcode.com/problems/insert-interval/
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
+/**
+ * Ad hoc
+ * Time: O(n)
+ * Space: O(n)
+ */
 public class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        // overlap ?
-        boolean overlap = false;
-        int start = -1, end = -1;
+        // Find overlapping interval and merge
+        // (find merged left and right of new interval)
+        int left = -1;
+        int right = -1;
         for (int[] interval : intervals) {
-            if (!(interval[1] < newInterval[0] || interval[0] > newInterval[1])) {
-                if (!overlap)
-                    start = Math.min(interval[0], newInterval[0]);
-                end = Math.max(interval[1], newInterval[1]);
-                overlap = true;
+            if (interval[0] <= newInterval[0] && newInterval[0] <= interval[1]) {
+                left = interval[0];
+            }
+            if (interval[0] <= newInterval[1] && newInterval[1] <= interval[1]) {
+                right = interval[1];
             }
         }
-        if (!overlap) {
-            start = newInterval[0];
-            end = newInterval[1];
+        if (left == -1) {
+            left = newInterval[0];
         }
-        // insert
-        List<int[]> newIntervals = new LinkedList<>();
-        boolean inserted = false;
+        if (right == -1) {
+            right = newInterval[1];
+        }
+
+        // Add new interval
+        // Exclude intervals overlapping with new interval
+        List<int[]> list = new ArrayList<>();
+        boolean addedNewInterval = false;
         for (int[] interval : intervals) {
-            if (interval[1] < start) {
-                newIntervals.add(interval);
+            if (interval[1] < left) {
+                list.add(interval);
             }
-            if (interval[0] > end) {
-                if (!inserted) {
-                    newIntervals.add(new int[] { start, end });
-                    inserted = true;
+            if (interval[0] > right) {
+                if (!addedNewInterval) {
+                    list.add(new int[] { left, right });
+                    addedNewInterval = true;
                 }
-                newIntervals.add(interval);
+                list.add(interval);
             }
         }
-        if (!inserted)
-            newIntervals.add(new int[] { start, end });
-        int[][] ret = new int[newIntervals.size()][2];
-        for (int i = 0; i < ret.length; ++i) {
-            ret[i] = newIntervals.get(i);
+        if (!addedNewInterval) {
+            list.add(new int[] { left, right });
         }
-        return ret;
+
+        return list.toArray(new int[list.size()][]);
     }
 }
