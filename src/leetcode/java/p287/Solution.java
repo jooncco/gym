@@ -2,46 +2,40 @@ package leetcode.java.p287;
 // https://leetcode.com/problems/find-the-duplicate-number/
 
 /**
- * Math (Pigeonhole principle)
- * | Time: O(nlog(nums[i]))
- * | Space: O(20)
+ * Math (Pigeonhole principle), Bitmask
+ * Time: O(nlog(nums[i]))
+ * Space: O(20)
  */
 public class Solution {
-    private final int LIMIT = 20;
-
     public int findDuplicate(int[] nums) {
+        // Compute bit count limits
         int n = nums.length - 1;
-        int[] limit = new int[LIMIT];
+        int[] bitCountLimit = new int[20];
         for (int i = 1; i <= n; ++i) {
-            countAndAddBinaryDigits(limit, i);
+            for (int idx = 0; idx < 20; ++idx) {
+                if (((1 << idx) & i) > 0) {
+                    bitCountLimit[idx]++;
+                }
+            }
         }
-        int[] cnt = new int[LIMIT];
+
+        // Compute bit counts
+        int[] bitCount = new int[20];
         for (int num : nums) {
-            countAndAddBinaryDigits(cnt, num);
+            for (int idx = 0; idx < 20; ++idx) {
+                if (((1 << idx) & num) > 0) {
+                    bitCount[idx]++;
+                }
+            }
         }
 
-        // compare and compute answer
-        int ans = 0;
-        boolean shift = false;
-        for (int i = 0; i < LIMIT; ++i) {
-            if (cnt[i] > limit[i]) {
-                ++ans;
-                shift = true;
+        // Find the duplicate
+        int duplicateNum = 0;
+        for (int i = 0; i < 20; ++i) {
+            if (bitCount[i] > bitCountLimit[i]) {
+                duplicateNum += (1 << i);
             }
-            if (shift && i < LIMIT - 1)
-                ans <<= 1;
         }
-        return ans;
-    }
-
-    private void countAndAddBinaryDigits(int[] cnt, int num) {
-        int idx = LIMIT - 1;
-        while (num > 0) {
-            if ((num & 1) == 1) {
-                ++cnt[idx];
-            }
-            num >>= 1;
-            --idx;
-        }
+        return duplicateNum;
     }
 }
