@@ -12,4 +12,6 @@
 
 #### Medium
 
+- [lc-2370](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2370)
+
 #### Hard
