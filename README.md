@@ -4,6 +4,16 @@
 
 ## Categories
 
+### Bitmask
+
+#### Easy
+
+#### Medium
+
+- [lc-2997](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2997)
+
+#### Hard
+
 ### Dynamic Programming
 
 #### Easy
