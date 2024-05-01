@@ -27,3 +27,13 @@
 - [lc-2370](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2370)
 
 #### Hard
+
+### Two Pointers
+
+#### Easy
+
+- [lc-2000](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2000)
+
+#### Medium
+
+#### Hard
