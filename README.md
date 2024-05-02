@@ -33,6 +33,7 @@
 #### Easy
 
 - [lc-2000](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2000)
+- [lc-2441](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2441)
 
 #### Medium
 
