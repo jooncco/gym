@@ -2,6 +2,11 @@
 https://leetcode.com/problems/merge-strings-alternately/?envType=study-plan-v2&envId=leetcode-75
 """
 class Solution:
+    """
+    String
+    - Time: O(n+m)
+    - Space: O(n+m)
+    """
     def mergeAlternately(self, word1: str, word2: str) -> str:
         i= 0
         j= 0

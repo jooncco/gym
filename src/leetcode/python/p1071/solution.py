@@ -2,6 +2,11 @@
 https://leetcode.com/problems/greatest-common-divisor-of-strings/description/?envType=study-plan-v2&envId=leetcode-75
 """
 class Solution:
+    """
+    String
+    - Time: O(n^2)
+    - Space: O(n)
+    """
     def gcdOfStrings(self, a: str, b: str) -> str:
         ret= ""
         for i, _ in enumerate(a):

@@ -2,6 +2,11 @@
 https://leetcode.com/problems/circular-sentence/
 """
 class Solution:
+    """
+    String
+    - Time: O(n)
+    - Space: O(n)
+    """
     def isCircularSentence(self, sentence: str) -> bool:
         if sentence[0] != sentence[-1]:
             return False

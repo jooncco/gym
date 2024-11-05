@@ -2,6 +2,11 @@
 https://leetcode.com/problems/delete-characters-to-make-fancy-string/
 """
 class Solution:
+    """
+    String
+    - Time: O(n)
+    - Space: O(n)
+    """
     def makeFancyString(self, s: str) -> str:
         ret= s[0]
         cnt= 1
