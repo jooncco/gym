@@ -1,19 +1,22 @@
 """
 https://leetcode.com/problems/circular-sentence/
 """
+
+
 class Solution:
     """
     String
     - Time: O(n)
     - Space: O(n)
     """
+
     def isCircularSentence(self, sentence: str) -> bool:
         if sentence[0] != sentence[-1]:
             return False
-        words = sentence.split(' ')
+        words = sentence.split(" ")
         for i, _ in enumerate(words):
             if i == 0:
                 continue
-            if words[i][0] != words[i-1][-1]:
+            if words[i][0] != words[i - 1][-1]:
                 return False
         return True
