@@ -6,7 +6,7 @@
 
 | Category | Easy | Medium | Hard  |
 | ---- | ---- | ---- | ---- |
-| Bitmask || [lc-1915](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1915) [lc-2997](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2997) [lc-2275](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2275)||
+| Bitmask || [lc-1829](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p1829) [lc-1915](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1915) [lc-2997](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2997) [lc-2275](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2275)||
 | Depth First Search | [lc-1863](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1863) | [lc-78](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p78) ||
 | Dynamic Programming | [lc-1137](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1137) | [lc-72](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p72) [lc-1289](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1289) [lc-2370](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2370) ||
 | Sortings || [lc-1608](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1608) ||
