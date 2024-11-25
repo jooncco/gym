@@ -6,7 +6,7 @@
 
 | Category | Easy | Medium | Hard  |
 | ---- | ---- | ---- | ---- |
-| Array |[lc-1431](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1431)|||
+| Array |[lc-605](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p605) [lc-1431](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1431)|||
 | Binary Search ||[lc-2070](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2070)||
 | Bitmask || [lc-1829](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p1829) [lc-1915](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1915) [lc-2997](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2997) [lc-2275](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2275)||
 | Breadth First Search |||[lc-773](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p773)|
@@ -16,4 +16,4 @@
 | Sortings || [lc-1608](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1608) [lc-2070](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2070)||
 | String | [lc-1071](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p1071) [lc-1768](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p1768) [lc-1957](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p1957) [lc-2490](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2490) | [lc-165](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p165) [lc-2914](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2914) [lc-3163](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p3163) ||
 | Two Pointers | [lc-2000](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2000) [lc-2441](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2441) | [lc-2516](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2516) ||
-| Greedy ||[lc-2914](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2914) [lc-1975](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1975)||
+| Greedy |[lc-605](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p605)|[lc-2914](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2914) [lc-1975](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1975)||
