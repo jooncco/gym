@@ -6,6 +6,7 @@
 
 | Category | Easy | Medium | Hard  |
 | ---- | ---- | ---- | ---- |
+| Array |[lc-1431](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1431)|||
 | Binary Search ||[lc-2070](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2070)||
 | Bitmask || [lc-1829](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p1829) [lc-1915](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p1915) [lc-2997](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p2997) [lc-2275](https://github.com/jooncco/gym/tree/main/src/leetcode/python/p2275)||
 | Breadth First Search |||[lc-773](https://github.com/jooncco/gym/tree/main/src/leetcode/java/p773)|

@@ -1,24 +1,23 @@
 package leetcode.java.p1431;
 // https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Math
- * | Time: O (n)
- * | Space: O (n)
+ * | Time: O(n)
+ * | Space: O(n)
  */
 public class Solution {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-        int maxCandy = 0;
+        int mx= 0;
         for (int candy : candies) {
-            maxCandy = Math.max(maxCandy, candy);
+            mx= Math.max(mx, candy);
         }
-        List<Boolean> result = new LinkedList<>();
+        List<Boolean> ans= new ArrayList<>();
         for (int candy : candies) {
-            result.add(candy + extraCandies >= maxCandy);
+            ans.add(candy + extraCandies >= mx);
         }
-        return result;
+        return ans;
     }
 }
