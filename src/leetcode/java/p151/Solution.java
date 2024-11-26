@@ -1,18 +1,19 @@
 package leetcode.java.p151;
-
 // https://leetcode.com/problems/reverse-words-in-a-string/
+
+/**
+ * String
+ * Time: O(n)
+ * Space: O(n)
+ */
 public class Solution {
     public String reverseWords(String s) {
-        String[] words = s.split(" ");
-        StringBuilder sb = new StringBuilder();
-        boolean whitespace = false;
-        for (int i = words.length - 1; i >= 0; --i) {
-            if (words[i].isBlank())
-                continue;
-            if (whitespace)
-                sb.append(" ");
-            sb.append(words[i]);
-            whitespace = true;
+        String[] words= s.split(" ");
+        StringBuilder sb= new StringBuilder();
+        sb.append(words[words.length-1]);
+        for (int i= words.length-2; i >= 0; --i) {
+            if (words[i].isBlank()) continue;
+            sb.append(" ").append(words[i]);
         }
         return sb.toString();
     }
