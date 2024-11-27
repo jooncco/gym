@@ -4,7 +4,7 @@ package leetcode.java.p3243;
 import java.util.*;
 
 /**
- * DFS
+ * DP, DFS
  * Time: O(nQ)
  * Space: O(n)
  */
