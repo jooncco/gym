@@ -1,4 +1,4 @@
-// https://codeforces.com/contest/2050/problem/A
+// https://codeforces.com/contest/2050/problem/B
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -16,22 +16,25 @@ typedef priority_queue<int, vi, less<int>> maxHeap;
 typedef priority_queue<int, vi, greater<int>> minHeap;
 
 /**
- * Greedy
+ * Math
  * Time: O(n)
  * Space: O(n)
  */
 void solve() {
-    int n, m;
-    cin >> n >> m;
-    string words[60];
-    for (int i=0; i < n; ++i) cin >> words[i];
-    int x= 0, len= 0;
+    int n; cin >> n;
+    int a[n];
+    for (int i=0; i < n; ++i) cin >> a[i];
+    ll evenSum= 0, oddSum= 0;
     for (int i=0; i < n; ++i) {
-        if (len+words[i].length() > m) break;
-        len += words[i].length();
-        ++x;
+        if (i%2 == 0) evenSum += a[i];
+        else oddSum += a[i];
     }
-    cout << x << "\n";
+    int evenCnt= n%2 == 0 ? n/2 : n/2+1, oddCnt= n/2;
+    bool yes= 1;
+    if (evenSum%evenCnt != 0) yes= 0;
+    if (oddSum%oddCnt != 0) yes= 0;
+    if (evenSum/evenCnt != oddSum/oddCnt) yes= 0;
+    cout << (yes ? "YES" : "NO") << "\n";
 }
 
 int main() {
