@@ -1,6 +1,10 @@
 # mac OS
 .DS_Store
 
+# competitive programming helper
+.cph/
+*.bin
+
 # test cases
 input.txt
 output.txt
