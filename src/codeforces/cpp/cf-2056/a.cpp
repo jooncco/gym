@@ -1,6 +1,6 @@
 // https://codeforces.com/contest/2056/problem/A
 /***
- * Math
+ * Math, Geomerty
  * Time: O(n)
  * Space: O(1)
  */
